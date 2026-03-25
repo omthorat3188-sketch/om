@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AISSMS Polytechnic, Pune</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --gold: #c8922a;
+    --gold-light: #e8b455;
+    --cream: #faf6ef;
+    --white: #ffffff;
+    --text: #1e2d42;
+    --muted: #6b7a90;
+    --border: rgba(200,146,42,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,146,42,0.3);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-logo .emblem {
+    width: 44px; height: 44px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 900;
+    color: var(--navy);
+  }
+  .nav-logo .brand { color: var(--white); }
+  .nav-logo .brand strong { display: block; font-size: 14px; font-weight: 600; letter-spacing: 0.05em; }
+  .nav-logo .brand span { font-size: 11px; color: var(--gold-light); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.25s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,146,42,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(200,146,42,0.07) 0%, transparent 50%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(200,146,42,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(200,146,42,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 68px;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  h1.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 82px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  h1.hero-title span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.25s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,146,42,0.4); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 72px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .hero-stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.05em; }
+
+  /* ─── ANNOUNCEMENT TICKER ─── */
+  .ticker {
+    background: var(--gold);
+    padding: 10px 0;
+    overflow: hidden;
+  }
+  .ticker-inner {
+    display: flex; gap: 80px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-size: 13px; font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .ticker-item::before { content: '◆'; font-size: 9px; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 96px 8%; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 16px; color: var(--muted);
+    max-width: 540px; line-height: 1.7; font-weight: 300;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center; margin-top: 60px;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 48px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(200,146,42,0.2) 0%, transparent 70%);
+  }
+  .about-card-icon {
+    font-size: 40px; margin-bottom: 20px;
+  }
+  .about-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; margin-bottom: 12px;
+    color: var(--gold-light);
+  }
+  .about-card p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+
+  .about-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold);
+    color: var(--navy);
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-weight: 700; text-align: center;
+    font-size: 13px;
+    line-height: 1.3;
+    box-shadow: 0 8px 24px rgba(200,146,42,0.4);
+  }
+  .about-badge strong { font-family: 'Playfair Display', serif; font-size: 26px; display: block; }
+
+  .about-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
+  }
+  .highlight-item {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .highlight-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(200,146,42,0.12);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .highlight-item h4 { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .highlight-item p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* ─── COURSES ─── */
+  #courses { background: var(--navy); }
+  #courses .section-title { color: var(--white); }
+  #courses .section-sub { color: rgba(255,255,255,0.5); }
+
+  .courses-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px; margin-top: 56px;
+  }
+
+  .course-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,146,42,0.2);
+    border-radius: 10px;
+    padding: 32px;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .course-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .course-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(200,146,42,0.5); transform: translateY(-4px); }
+  .course-card:hover::after { transform: scaleX(1); }
+
+  .course-icon { font-size: 36px; margin-bottom: 16px; }
+  .course-card h3 { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .course-card p { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .course-tag {
+    display: inline-block;
+    background: rgba(200,146,42,0.2);
+    color: var(--gold-light);
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px;
+    margin-top: 16px; letter-spacing: 0.05em;
+  }
+
+  /* ─── FACILITIES ─── */
+  .facilities-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px;
+  }
+
+  .facility-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 36px 28px;
+    border: 1px solid rgba(200,146,42,0.15);
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .facility-card:hover { box-shadow: 0 12px 40px rgba(200,146,42,0.12); transform: translateY(-4px); }
+  .facility-card .fac-icon {
+    font-size: 42px; margin-bottom: 16px;
+  }
+  .facility-card h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .facility-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── PLACEMENT ─── */
+  .placement-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #0f1f3a 100%);
+  }
+  .placement-section .section-title { color: var(--white); }
+  .placement-section .section-sub { color: rgba(255,255,255,0.5); }
+
+  .placement-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px;
+  }
+
+  .p-stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,146,42,0.25);
+    border-radius: 10px;
+    padding: 32px 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .p-stat-card:hover { background: rgba(200,146,42,0.1); transform: translateY(-4px); }
+  .p-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--gold); display: block;
+  }
+  .p-stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 8px; }
+
+  .recruiters {
+    margin-top: 56px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+  }
+  .recruiters h3 {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px;
+    text-align: center;
+  }
+  .recruiter-list {
+    display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+  }
+  .recruiter-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    padding: 8px 20px; border-radius: 25px;
+    font-size: 13.5px; font-weight: 500;
+    transition: all 0.25s;
+  }
+  .recruiter-chip:hover { background: rgba(200,146,42,0.15); border-color: var(--gold); color: var(--gold-light); }
+
+  /* ─── ADMISSION ─── */
+  .admission-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: start; margin-top: 56px;
+  }
+
+  .admission-steps { list-style: none; }
+  .step-item {
+    display: flex; gap: 20px; margin-bottom: 32px;
+  }
+  .step-num {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+  }
+  .step-item h4 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .step-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .admission-info-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 40px;
+    color: var(--white);
+  }
+  .admission-info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--gold-light); margin-bottom: 24px;
+  }
+  .info-row {
+    display: flex; justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row span:first-child { color: rgba(255,255,255,0.5); }
+  .info-row span:last-child { font-weight: 600; color: var(--white); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--navy); }
+  #contact .section-title { color: var(--white); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 56px;
+  }
+
+  .contact-info-item {
+    display: flex; gap: 16px; align-items: flex-start; margin-bottom: 28px;
+  }
+  .contact-icon {
+    width: 46px; height: 46px; flex-shrink: 0;
+    background: rgba(200,146,42,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .contact-info-item h4 { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .contact-info-item p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+  .contact-form {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    transition: border-color 0.25s;
+    outline: none;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+
+  .contact-form button {
+    background: var(--gold);
+    color: var(--navy);
+    border: none; cursor: pointer;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+  }
+  .contact-form button:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060e1a;
+    padding: 48px 8%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+    border-top: 1px solid rgba(200,146,42,0.2);
+  }
+
+  .footer-logo { display: flex; align-items: center; gap: 12px; }
+  .footer-logo .emblem {
+    width: 40px; height: 40px;
+    background: var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; color: var(--navy);
+  }
+  .footer-logo p { font-size: 13px; color: rgba(255,255,255,0.4); }
+  .footer-logo strong { color: rgba(255,255,255,0.8); font-size: 14px; }
+
+  footer .copy { font-size: 12.5px; color: rgba(255,255,255,0.3); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .about-grid, .admission-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .facilities-grid { grid-template-columns: repeat(2, 1fr); }
+    .placement-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 64px 6%; }
+    .facilities-grid { grid-template-columns: 1fr; }
+    .placement-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="emblem">A</div>
+    <div class="brand">
+      <strong>AISSMS Polytechnic</strong>
+      <span>Pune, Maharashtra</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#placement">Placements</a>
+    <a href="#admission">Admission</a>
+    <a href="#contact" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🏛 Est. 1994 · AICTE Approved · MSBTE Affiliated</div>
+    <h1 class="hero-title">
+      Excellence in<br><span>Technical Education</span>
+    </h1>
+    <p class="hero-sub">
+      All India Shri Shivaji Memorial Society's Polytechnic — shaping skilled engineers for three decades in the heart of Pune.
+    </p>
+    <div class="hero-btns">
+      <a href="#admission" class="btn-primary">Apply for Admission</a>
+      <a href="#courses" class="btn-outline">Explore Courses</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">30+</span>
+        <div class="hero-stat-label">Years of Excellence</div>
+      </div>
+      <div>
+        <span class="hero-stat-num">525</span>
+        <div class="hero-stat-label">Student Seats</div>
+      </div>
+      <div>
+        <span class="hero-stat-num">8</span>
+        <div class="hero-stat-label">Engineering Disciplines</div>
+      </div>
+      <div>
+        <span class="hero-stat-num">NBA</span>
+        <div class="hero-stat-label">Accredited Branches</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Admissions Open 2025–26 · Apply Before September</span>
+    <span class="ticker-item">NBA Accreditation for 3 Core Programmes</span>
+    <span class="ticker-item">New Course: AI & Machine Learning Diploma</span>
+    <span class="ticker-item">Campus Placement Drive — Tata Motors, Wipro & more</span>
+    <span class="ticker-item">Merit-Based Scholarships Up to 100%</span>
+    <span class="ticker-item">Admissions Open 2025–26 · Apply Before September</span>
+    <span class="ticker-item">NBA Accreditation for 3 Core Programmes</span>
+    <span class="ticker-item">New Course: AI & Machine Learning Diploma</span>
+    <span class="ticker-item">Campus Placement Drive — Tata Motors, Wipro & more</span>
+    <span class="ticker-item">Merit-Based Scholarships Up to 100%</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About the Institution</div>
+  <h2 class="section-title">A Legacy of Engineering<br>& Innovation</h2>
+
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-card">
+        <div class="about-card-icon">🎓</div>
+        <h3>Our Mission</h3>
+        <p>To produce diploma holders of repute by providing world-class physical and academic infrastructure, instilling research temperament, and nurturing holistic development through student-centred education.</p>
+      </div>
+      <div class="about-badge">
+        <strong>1994</strong>Founded
+      </div>
+    </div>
+
+    <div class="about-text">
+      <p>AISSMS Polytechnic was founded in July 1994 by the All India Shri Shivaji Memorial Society — an institution with deep roots in Maharashtra's educational heritage going back to 1917. Located on Kennedy Road, Pune, we offer diploma programmes across eight engineering disciplines.</p>
+      <p>Affiliated with MSBTE Mumbai and approved by AICTE New Delhi, the institute blends rigorous academics with cutting-edge practical training to prepare students for thriving careers in industry.</p>
+
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🔬</div>
+          <div>
+            <h4>Advanced Laboratories</h4>
+            <p>State-of-the-art labs focused on practical knowledge</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">👩‍🏫</div>
+          <div>
+            <h4>Dedicated Faculty</h4>
+            <p>Experienced educators with industry exposure</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🌱</div>
+          <div>
+            <h4>Green Campus</h4>
+            <p>Environmentally conscious campus initiative</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🤝</div>
+          <div>
+            <h4>Industry MOUs</h4>
+            <p>Partnerships with Omkar Technologies, NITS Global & more</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-label">Academic Programmes</div>
+  <h2 class="section-title">Diploma Engineering<br>Courses</h2>
+  <p class="section-sub">3-year diploma programmes approved by AICTE, equipping students with technical expertise and industry-ready skills.</p>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-icon">💻</div>
+      <h3>Computer Engineering</h3>
+      <p>Software development, data structures, databases, networking and modern computing technologies.</p>
+      <span class="course-tag">NBA Accredited</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">⚙️</div>
+      <h3>Mechanical Engineering</h3>
+      <p>Design, manufacturing, thermodynamics, and industrial automation with hands-on workshop training.</p>
+      <span class="course-tag">NBA Accredited</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🏗️</div>
+      <h3>Civil Engineering</h3>
+      <p>Structural design, construction management, surveying, and environmental engineering practices.</p>
+      <span class="course-tag">NBA Accredited</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">⚡</div>
+      <h3>Electrical Engineering</h3>
+      <p>Power systems, circuit design, electrical machines, and industrial control systems.</p>
+      <span class="course-tag">3-Year Diploma</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">📡</div>
+      <h3>Electronics & Telecom</h3>
+      <p>Communication systems, embedded systems, signal processing, and IoT technologies.</p>
+      <span class="course-tag">3-Year Diploma</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🖥️</div>
+      <h3>Information Technology</h3>
+      <p>Web development, cloud computing, cybersecurity, and enterprise IT solutions.</p>
+      <span class="course-tag">3-Year Diploma</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🚗</div>
+      <h3>Automobile Engineering</h3>
+      <p>Vehicle design, engine technology, automotive electronics, and manufacturing processes.</p>
+      <span class="course-tag">3-Year Diploma</span>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🤖</div>
+      <h3>AI & Machine Learning</h3>
+      <p>Python, deep learning, data analytics, neural networks, and practical AI application development.</p>
+      <span class="course-tag">New Programme</span>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="section-label">Infrastructure</div>
+  <h2 class="section-title">World-Class Campus<br>Facilities</h2>
+  <p class="section-sub">Every facility at AISSMS is designed to support students' academic and personal growth.</p>
+
+  <div class="facilities-grid">
+    <div class="facility-card">
+      <div class="fac-icon">🔭</div>
+      <h3>Advanced Laboratories</h3>
+      <p>Fully equipped engineering labs with modern instruments, enabling deep practical learning in every discipline.</p>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">📚</div>
+      <h3>Comprehensive Library</h3>
+      <p>Extensive collection of technical books, journals, digital resources, and reference materials for all programmes.</p>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🖥️</div>
+      <h3>Computer Centre</h3>
+      <p>State-of-the-art computer labs with the latest hardware and software, available to students round the clock.</p>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🏠</div>
+      <h3>Student Hostels</h3>
+      <p>Separate hostels for boys and girls — 100 and 200 capacity respectively — with all amenities including dining.</p>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🏃</div>
+      <h3>Sports & Recreation</h3>
+      <p>Sports grounds, indoor games, and annual sports meets supporting student health and competitive spirit.</p>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🎭</div>
+      <h3>Cultural Activities</h3>
+      <p>Vibrant festival celebrations, talent showcases, drama, dance, and literary clubs fostering creative expression.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLACEMENT -->
+<section id="placement" class="placement-section">
+  <div class="section-label">Career & Placements</div>
+  <h2 class="section-title">Launching Careers in<br>Industry</h2>
+  <p class="section-sub">Our dedicated Training & Placement Cell bridges students with leading companies through campus drives, internships, and industry interactions.</p>
+
+  <div class="placement-stats">
+    <div class="p-stat-card">
+      <span class="p-stat-num">85%+</span>
+      <div class="p-stat-label">Placement Rate</div>
+    </div>
+    <div class="p-stat-card">
+      <span class="p-stat-num">50+</span>
+      <div class="p-stat-label">Recruiting Companies</div>
+    </div>
+    <div class="p-stat-card">
+      <span class="p-stat-num">₹4.5L</span>
+      <div class="p-stat-label">Average Package</div>
+    </div>
+    <div class="p-stat-card">
+      <span class="p-stat-num">20</span>
+      <div class="p-stat-label">Students per Tutor</div>
+    </div>
+  </div>
+
+  <div class="recruiters">
+    <h3>Top Recruiters</h3>
+    <div class="recruiter-list">
+      <span class="recruiter-chip">Tata Motors</span>
+      <span class="recruiter-chip">Wipro</span>
+      <span class="recruiter-chip">Tata Technologies</span>
+      <span class="recruiter-chip">Larsen & Toubro</span>
+      <span class="recruiter-chip">Vishay Components</span>
+      <span class="recruiter-chip">Kalpataru Power</span>
+      <span class="recruiter-chip">Cashtech Solutions</span>
+      <span class="recruiter-chip">Omkar Technologies</span>
+      <span class="recruiter-chip">NITS Global</span>
+      <span class="recruiter-chip">GATI Automation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSION -->
+<section id="admission">
+  <div class="section-label">Join Us</div>
+  <h2 class="section-title">Admission Process<br>2025–26</h2>
+
+  <div class="admission-grid">
+    <ul class="admission-steps">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Complete 10th Standard</h4>
+          <p>Eligibility requires completion of SSC (10th) with Mathematics & Science. Direct 2nd Year via HSC (12th).</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Fill DTE Online Form</h4>
+          <p>Register and submit the online application via the Maharashtra DTE portal. No entrance exam required for first year.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Centralised Counselling</h4>
+          <p>Seats are allotted through the state centralised merit-based counselling process based on 10th marks.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Document Verification</h4>
+          <p>Visit campus with originals — 10th Marksheet, school leaving certificate, identity proof, and category documents.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Fee Payment & Enrolment</h4>
+          <p>Pay admission fees to confirm your seat. Last date typically falls in September each year.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="admission-info-card">
+      <h3>Quick Information</h3>
+      <div class="info-row">
+        <span>Course Duration</span>
+        <span>3 Years (Diploma)</span>
+      </div>
+      <div class="info-row">
+        <span>Total Seats</span>
+        <span>525</span>
+      </div>
+      <div class="info-row">
+        <span>Annual Fee</span>
+        <span>₹1,00,901</span>
+      </div>
+      <div class="info-row">
+        <span>Tuition Fee</span>
+        <span>₹89,294 / year</span>
+      </div>
+      <div class="info-row">
+        <span>Eligibility</span>
+        <span>10th Pass (Maths & Science)</span>
+      </div>
+      <div class="info-row">
+        <span>Affiliation</span>
+        <span>MSBTE Mumbai</span>
+      </div>
+      <div class="info-row">
+        <span>Approval</span>
+        <span>AICTE, DTE Maharashtra</span>
+      </div>
+      <div class="info-row">
+        <span>Scholarship</span>
+        <span>Up to 100% Available</span>
+      </div>
+      <div class="info-row">
+        <span>Application Deadline</span>
+        <span>September 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title" style="color:var(--white)">Contact &amp; Enquiry</h2>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Address</h4>
+          <p>Near R.T.O., Railway Officers Colony,<br>Sangamvadi, Pune – 411 001,<br>Maharashtra, India</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p>020-20658287 (General)<br>8496045045 (Admission)</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p>principal@aissmspolyorg.in<br>aissmspolypune@yahoo.co.in</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <h4>Website</h4>
+          <p>www.aissmspoly.org.in</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <input type="text" placeholder="Your Full Name">
+      <input type="email" placeholder="Email Address">
+      <input type="tel" placeholder="Mobile Number">
+      <select>
+        <option value="" disabled selected>Select Course of Interest</option>
+        <option>Computer Engineering</option>
+        <option>Mechanical Engineering</option>
+        <option>Civil Engineering</option>
+        <option>Electrical Engineering</option>
+        <option>Electronics & Telecom</option>
+        <option>Information Technology</option>
+        <option>Automobile Engineering</option>
+        <option>AI & Machine Learning</option>
+      </select>
+      <textarea placeholder="Your Message or Query..."></textarea>
+      <button type="button">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="emblem">A</div>
+    <div>
+      <strong>AISSMS Polytechnic, Pune</strong>
+      <p>Affiliated to MSBTE · Approved by AICTE & DTE</p>
+    </div>
+  </div>
+  <p class="copy">© 2025 All India Shri Shivaji Memorial Society's Polytechnic. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
